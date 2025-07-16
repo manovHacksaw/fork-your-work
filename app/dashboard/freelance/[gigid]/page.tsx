@@ -354,7 +354,7 @@ function GigDetailPage() {
                     <div className="font-semibold">{formatUnits(gigDetails.usdtAmount, 6)} USDT</div>
                     {gigDetails.nativeStakeRequired > BigInt(0) && (
                       <div className="text-xs text-yellow-400">
-                        +{formatEther(gigDetails.nativeStakeRequired)} ETH stake
+                        +{formatEther(gigDetails.nativeStakeRequired)} BNBstake
                       </div>
                     )}
                   </div>

@@ -2,28 +2,28 @@ import { http, createConfig } from "wagmi"
 import { injected, metaMask, walletConnect } from "wagmi/connectors"
 import { defineChain } from "viem"
 
-// Define Core testnet 2 chain
-const coreTestnet2 = defineChain({
-  id: 1114,
-  name: 'Core Testnet 2',
-  network: 'core-testnet-2',
+// Define BNB Smart Chain Testnet chain
+const bnbSmartChainTestnet = defineChain({
+  id: 97,
+  name: 'BNB Smart Chain Testnet ',
+  network: 'bnb-smart-chain-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'tCORE',
-    symbol: 'tCORE',
+    name: 'tBNB',
+    symbol: 'tBNB',
   },
   rpcUrls: {
     default: {
-      http: ['https://rpc.test.btcs.network'],
+      http: ['https://bsc-testnet-rpc.publicnode.com/'],
     },
     public: {
-      http: ['https://rpc.test.btcs.network'],
+      http: ['https://bsc-testnet-rpc.publicnode.com/'],
     },
   },
   blockExplorers: {
     default: {
-      name: 'Core Testnet Explorer',
-      url: 'https://scan.test.btcs.network',
+      name: 'BNB Smart Chain Testnet Explorer',
+      url: 'https://testnet.bscscan.com',
     },
   },
   testnet: true,
@@ -53,9 +53,9 @@ const connectors = [
 console.log("Wagmi config: Available connectors:", connectors.map(c => c.name))
 
 export const config = createConfig({
-  chains: [coreTestnet2], // ✅ Set chain to Core testnet 2
+  chains: [bnbSmartChainTestnet], // ✅ Set chain to BNB Smart Chain Testnet
   connectors,
   transports: {
-    [coreTestnet2.id]: http(), // ✅ Use default RPC for Core testnet 2
+    [bnbSmartChainTestnet.id]: http(), // ✅ Use default RPC for BNB Smart Chain Testnet
   },
 })

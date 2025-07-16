@@ -29,32 +29,45 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [showConnectionAnimation, setShowConnectionAnimation] = useState(false)
   const [hasShownAnimation, setHasShownAnimation] = useState(false)
   const [shouldRedirectToDashboard, setShouldRedirectToDashboard] = useState(false)
+  const [isAutoSwitching, setIsAutoSwitching] = useState(false)
 
-  // Core Testnet 2 Chain ID
-  const CORE_TESTNET_2_CHAIN_ID = 1114
+  // BNB Smart Chain Testnet ID (fixed typo)
+  const BNB_SMART_CHAIN_TESTNET_ID = 97;
 
-  // Switch to Core Testnet 2 if connected to wrong network
+  // Switch to BNB Smart Chain Testnet if connected to wrong network
   useEffect(() => {
-    if (isConnected && chainId && chainId !== CORE_TESTNET_2_CHAIN_ID) {
-      console.log("Wallet context: Switching to Core Testnet 2. Current chain:", chainId)
-      try {
-        switchChain({ chainId: CORE_TESTNET_2_CHAIN_ID })
-      } catch (error) {
-        console.error("Failed to switch to Core Testnet 2:", error)
+    if (isConnected && chainId && chainId !== BNB_SMART_CHAIN_TESTNET_ID && !isAutoSwitching) {
+      console.log("Wallet context: Switching to BNB Smart Chain Testnet. Current chain:", chainId)
+      setIsAutoSwitching(true)
+      
+      const switchToTargetChain = async () => {
+        try {
+          await switchChain({ chainId: BNB_SMART_CHAIN_TESTNET_ID })
+          console.log("Wallet context: Successfully switched to BNB Smart Chain Testnet")
+        } catch (error) {
+          console.error("Failed to switch to BNB Smart Chain Testnet:", error)
+          // You might want to show a user-friendly error message here
+        } finally {
+          setIsAutoSwitching(false)
+        }
       }
+      
+      switchToTargetChain()
     }
-  }, [isConnected, chainId, switchChain])
+  }, [isConnected, chainId, switchChain, isAutoSwitching])
 
   // Reset animation state when wallet disconnects
   useEffect(() => {
     if (!isConnected) {
       setShowConnectionAnimation(false)
+      setIsAutoSwitching(false)
     }
   }, [isConnected])
 
-  // Handle redirect to dashboard when wallet connects
+  // Handle redirect to dashboard when wallet connects and is on correct chain
   useEffect(() => {
-    if (isConnected && address && shouldRedirectToDashboard) {
+    if (isConnected && address && shouldRedirectToDashboard && 
+        chainId === BNB_SMART_CHAIN_TESTNET_ID && !isAutoSwitching) {
       // Check if we're not already on a dashboard page
       const currentPath = window.location.pathname
       if (!currentPath.startsWith('/dashboard')) {
@@ -62,7 +75,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       }
       setShouldRedirectToDashboard(false)
     }
-  }, [isConnected, address, shouldRedirectToDashboard, router])
+  }, [isConnected, address, shouldRedirectToDashboard, router, chainId, isAutoSwitching])
 
   const connect = async (connectorId: string): Promise<void> => {
     console.log("Wallet context: Starting connection for connector:", connectorId)
@@ -92,6 +105,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
     wagmiDisconnect()
     setShowConnectionAnimation(false)
     setShouldRedirectToDashboard(false)
+    setIsAutoSwitching(false)
   }
 
   return (
@@ -99,7 +113,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       value={{
         isConnected,
         address,
-        isConnecting: isPending,
+        isConnecting: isPending || isAutoSwitching,
         connect,
         disconnect,
         showConnectionAnimation,

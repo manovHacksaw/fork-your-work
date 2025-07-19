@@ -63,12 +63,23 @@ Contract Address: 0x0caE75a45201304d6b45541BCeF12bd3ee787e28
 - **Solidity 0.8.19** - Smart contract development
 - **OpenZeppelin** - Secure contract libraries
 - **USDT Integration** - Stablecoin payments
-- **Ethereum** - Decentralized execution
+- **Binance Smart Chain Testnet** - Decentralized execution
 
 ### Development Tools
 - **ESLint** - Code quality and consistency
 - **Prettier** - Code formatting
 - **Turbopack** - Fast development builds
+
+## 🌐 Blockchain Deployment Details
+
+### 🧪 Test Network
+
+- **Chain**: Binance Smart Chain (BSC) Testnet (Chapel)
+- **RPC URL**: [`https://data-seed-prebsc-1-s1.binance.org:8545/`](https://data-seed-prebsc-1-s1.binance.org:8545/)
+- **Chain ID**: `97`
+- **Faucet**: [https://testnet.binance.org/faucet-smart](https://testnet.binance.org/faucet-smart)
+- **Explorer**: [https://testnet.bscscan.com](https://testnet.bscscan.com)
+
 
 ## 🚀 Getting Started
 
@@ -142,21 +153,21 @@ Contract Address: 0x0caE75a45201304d6b45541BCeF12bd3ee787e28
 ## 🔧 Smart Contracts
 
 ### Bounty Contract (`Bounty.sol`)
-- Contract Address: [0x0caE75a45201304d6b45541BCeF12bd3ee787e28](https://sepolia.etherscan.io/address/0x0caE75a45201304d6b45541BCeF12bd3ee787e28)
+- Contract Address: [0xAFeB0a23D4a66959b266e52B9C6C802f7066D080](https://testnet.bscscan.com/address/0xAFeB0a23D4a66959b266e52B9C6C802f7066D080)
 - Manages competitive bounty competitions
 - Handles USDT payments and prize distribution
 - Implements deadline enforcement and penalty systems
 - Supports multiple categories and submission tracking
 
 ### Freelance Contract (`Freelance.sol`)
-- Contract Addres: [0xfa80583757AaE278b0849B815A3A19bd5285d311](https://sepolia.etherscan.io/address/0xfa80583757AaE278b0849B815A3A19bd5285d311)
+- Contract Addres: [0xE6607B79d688Ab5009e28429eb4f91c8C1D04E85](https://testnet.bscscan.com/address/0xE6607B79d688Ab5009e28429eb4f91c8C1D04E85)
 - Escrow system for freelance projects
 - Staking mechanism for freelancer commitment
 - Proposal management and selection process
 - Automated deadline handling and fund release
 
 ### USDT Token (Mock)
-- Token Address: [0x82d5125995AD54D9ff7f856F4a2D2273B00d8b61](https://sepolia.etherscan.io/address/0x82d5125995AD54D9ff7f856F4a2D2273B00d8b61)
+- Token Address: [0x4167fAFa35788176918A0c3A010247A21618fb18](https://testnet.bscscan.com/address/0x4167fAFa35788176918A0c3A010247A21618fb18)
 - ERC20 stablecoin used for all payments on the platform
   
 
@@ -192,8 +203,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔗 Links
 
-- **Live Demo**: [fork-wrok.vercel.app](https://fork-wrok.vercel.app/)
-- **GitHub Repository**: [github.com/Debanjannnn/ForkWrok](https://github.com/Debanjannnn/ForkWrok)
+- **Live Demo**: [fork-your-work.vercel.app/](https://fork-your-work.vercel.app/)
+- **GitHub Repository**: [github.com/manovHacksaw/fork-your-work](https://github.com/manovHacksaw/fork-your-work)
 - **Documentation**: [Coming Soon]
 
 ## 🙏 Acknowledgments
@@ -208,6 +219,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Fork Work** - Revolutionizing the future of work, one smart contract at a time. 🚀
 
 *The only cut taken? Your gas fees.*
-# fork-your-work-on-core
-# fork-your-work-on-core
 # fork-your-work

@@ -6,7 +6,8 @@ import { useState, useEffect } from "react"
 import { motion, type Variants } from "framer-motion"
 import { Poppins } from "next/font/google"
 import { useRouter, useParams } from "next/navigation"
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt, useAccount } from "wagmi"
+import { useReadContract, useWaitForTransactionReceipt, useAccount } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { formatUnits, parseUnits } from "viem"
 import { toast } from "sonner"
 import {
@@ -142,7 +143,7 @@ function BountySubmissionsComponent({ bountyId }: { bountyId: string }) {
   })
 
   // Contract writes
-  const { writeContract, data: hash, isPending, error: writeError } = useWriteContract()
+  const { writeContract, hash, isPending, error: writeError } = useSafeWriteContract()
   const { isLoading: isConfirming, isSuccess } = useWaitForTransactionReceipt({ hash })
 
   // Access control check

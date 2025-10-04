@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Poppins } from "next/font/google"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import { useReadContract, useWaitForTransactionReceipt } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { toast } from "sonner"
 import { formatDistanceToNow } from "date-fns"
 
@@ -89,12 +90,11 @@ function ProposalDetailPage() {
 
   // --- Smart Contract Write Operations ---
   const {
-    data: hash,
+    hash,
     writeContract,
     isPending: isWritePending,
     error: writeError,
-    reset: resetWrite,
-  } = useWriteContract()
+  } = useSafeWriteContract()
 
   const {
     isLoading: isConfirming,
@@ -145,14 +145,13 @@ function ProposalDetailPage() {
 
       // Reset action state
       setCurrentAction(null)
-      resetWrite()
 
       // Redirect after a delay
       setTimeout(() => {
         router.push(`/dashboard/freelance/${gigIdString}/proposals`)
       }, 2500)
     }
-  }, [isConfirmed, currentAction, refetchGig, refetchProposal, resetWrite, router, gigIdString])
+  }, [isConfirmed, currentAction, refetchGig, refetchProposal, router, gigIdString])
 
   // --- Error Handling ---
   useEffect(() => {

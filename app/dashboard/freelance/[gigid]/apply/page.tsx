@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Poppins } from "next/font/google"
 import Link from "next/link"
 import { useRouter, useParams } from "next/navigation"
-import { useWriteContract, useWaitForTransactionReceipt, useReadContract } from "wagmi"
+import { useWaitForTransactionReceipt, useReadContract } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { toast } from "sonner"
 
 import { cn } from "@/lib/utils"
@@ -60,8 +61,7 @@ function ApplyForGigPage() {
     args: [gigId, (address || "0x0000000000000000000000000000000000000000") as `0x${string}`],
   })
 
-  const { data: hash, writeContractAsync, isPending: isWritePending } = useWriteContract()
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
+  const { writeContractAsync, isPending: isWritePending, hash, isConfirming, isConfirmed } = useSafeWriteContract()
 
   const handleProposalSubmit = async (formData: ProposalFormData) => {
     const toastId = toast.loading("Preparing your proposal...")

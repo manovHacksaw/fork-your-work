@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
-import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import { useWaitForTransactionReceipt } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { toast } from "sonner"
 
 import { FREELANCE_CONTRACT_ADDRESS, FREELANCE_ABI } from "@/lib/contracts"
@@ -187,7 +188,7 @@ function ProposalCard({
 }
 
 function ProposalsList({ gigId, proposals, gigDetails }: ProposalsListProps) {
-  const { data: hash, writeContractAsync, isPending: isWritePending } = useWriteContract()
+  const { writeContractAsync, isPending: isWritePending, hash } = useSafeWriteContract()
   const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
 
   const handleSelectFreelancer = async (freelancer: string) => {

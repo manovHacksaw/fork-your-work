@@ -29,7 +29,8 @@ import {
   ExternalLink,
 } from "lucide-react"
 import Link from "next/link"
-import { useWriteContract, useWaitForTransactionReceipt, useReadContract } from "wagmi"
+import { useWaitForTransactionReceipt, useReadContract } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { parseUnits, formatUnits } from "viem"
 import { BOUNTY_CONTRACT_ADDRESS, BOUNTY_ABI, USDT_TOKEN_ADDRESS, ERC20_ABI } from "@/lib/contracts"
 import { uploadToPinata, type PinataMetadata } from "@/lib/pinata"
@@ -150,17 +151,17 @@ export default function PostBounty() {
 
   const {
     writeContract: approveContract,
-    data: approveHash,
+    hash: approveHash,
     isPending: isApprovePending,
     error: approveError,
-  } = useWriteContract()
+  } = useSafeWriteContract()
 
   const {
     writeContract: createContract,
-    data: createHash,
+    hash: createHash,
     isPending: isCreatePending,
     error: createError,
-  } = useWriteContract()
+  } = useSafeWriteContract()
 
   const { isLoading: isApproveConfirming, isSuccess: isApproveSuccess } = useWaitForTransactionReceipt({
     hash: approveHash,

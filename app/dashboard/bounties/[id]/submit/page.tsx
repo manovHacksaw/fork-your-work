@@ -526,10 +526,10 @@ function SubmitBountyComponent({ bountyId }: { bountyId: string }) {
             <Loader2 className="w-16 h-16 mx-auto text-[#E23E6B] mb-6" />
           </motion.div>
           <h3 className="text-2xl font-thin mb-2">
-            {isPending ? "Submitting to Blockchain..." : isConfirming ? "Confirming Transaction..." : "Processing..."}
+            {isWritePending ? "Submitting to Blockchain..." : isConfirming ? "Confirming Transaction..." : "Processing..."}
           </h3>
           <p className="text-gray-400 mb-4">
-            {isPending
+            {isWritePending
               ? "Please confirm the transaction in your wallet"
               : isConfirming
                 ? "Waiting for blockchain confirmation"

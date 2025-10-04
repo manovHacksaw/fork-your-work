@@ -2,7 +2,8 @@
 
 import { useState, type FormEvent } from "react"
 import { motion } from "framer-motion"
-import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import { useWaitForTransactionReceipt } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { toast } from "sonner"
 
 import { FREELANCE_CONTRACT_ADDRESS, FREELANCE_ABI } from "@/lib/contracts"
@@ -35,8 +36,7 @@ function ProposalSubmissionForm({ gigId }: ProposalSubmissionFormProps) {
   const [additionalNotes, setAdditionalNotes] = useState("")
 
   // Transaction state
-  const { data: hash, writeContractAsync, isPending: isWritePending } = useWriteContract()
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
+  const { writeContractAsync, isPending: isWritePending, hash, isConfirming, isConfirmed } = useSafeWriteContract()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()

@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Poppins } from "next/font/google"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import { useWaitForTransactionReceipt } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { parseUnits, parseEther } from "viem"
 import { toast } from "sonner"
 
@@ -85,8 +86,7 @@ function PostGigPage() {
   const [proposalDuration, setProposalDuration] = useState("")
 
   // Transaction state
-  const { data: hash, writeContractAsync, isPending: isWritePending } = useWriteContract()
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
+  const { writeContractAsync, isPending: isWritePending, hash, isConfirming, isConfirmed } = useSafeWriteContract()
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()

@@ -5,7 +5,8 @@ import { motion } from "framer-motion"
 import { Poppins } from "next/font/google"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
-import { useReadContract, useWriteContract, useWaitForTransactionReceipt } from "wagmi"
+import { useReadContract, useWaitForTransactionReceipt } from "wagmi"
+import { useSafeWriteContract } from "@/hooks/use-safe-write-contract"
 import { toast } from "sonner"
 import {
   ArrowLeft,
@@ -110,8 +111,7 @@ function SubmitBountyComponent({ bountyId }: { bountyId: string }) {
     },
   })
 
-  const { data: hash, error: writeError, isPending, writeContract } = useWriteContract()
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash })
+  const { writeContract, isPending: isWritePending, error: writeError, hash, isConfirming, isConfirmed } = useSafeWriteContract()
 
   // Parse markdown and extract code blocks
   const parseMarkdown = (markdown: string): ParsedSubmission => {

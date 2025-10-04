@@ -31,7 +31,7 @@ const episodes = [
         image: "https://i.pinimg.com/736x/c7/17/02/c71702f017efc971dae7cb6e4cb09c5c.jpg",
         title: "Trustless, Not Jobless: Staking for Serious Work",
         duration: "36:05",
-        tag: "Web3 Work Ethic",
+        tag: "U2U Work Ethic",
         name: "Zubair Khan",
         description: "31 years old • Web3 Work Architect",
         delay: 0.3,

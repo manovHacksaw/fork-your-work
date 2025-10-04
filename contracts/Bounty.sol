@@ -62,7 +62,7 @@ contract Allin1Bounty is ReentrancyGuard, Ownable {
     
     IERC20 public immutable usdtToken;
 
-    constructor(address _usdt) Ownable(msg.sender) {
+    constructor(address _usdt) Ownable() {
         usdtToken = IERC20(_usdt);
     }
     

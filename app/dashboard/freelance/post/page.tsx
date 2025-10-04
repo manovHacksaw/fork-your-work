@@ -332,7 +332,7 @@ function PostGigPage() {
 
               {/* Native Stake */}
               <FormField
-                label="Freelancer Stake (ETH))"
+                label="Freelancer Stake (U2U))"
                 icon={<DollarSign className="w-4 h-4 text-yellow-400" />}
                 tooltip="Optional stake that freelancers must deposit. Returned upon completion."
               >

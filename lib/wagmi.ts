@@ -2,31 +2,31 @@ import { http, createConfig } from "wagmi"
 import { injected, metaMask, walletConnect } from "wagmi/connectors"
 import { defineChain } from "viem"
 
-// Define BNB Smart Chain Testnet chain
-const bnbSmartChainTestnet = defineChain({
-  id: 97,
-  name: 'BNB Smart Chain Testnet ',
-  network: 'bnb-smart-chain-testnet',
+// Define U2U Solaris Mainnet chain
+const u2uSolarisMainnet = defineChain({
+  id: 39,
+  name: 'U2U Solaris Mainnet',
+  network: 'u2u-solaris-mainnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'tBNB',
-    symbol: 'tBNB',
+    name: 'U2U',
+    symbol: 'U2U',
   },
   rpcUrls: {
     default: {
-      http: ['https://bsc-testnet-rpc.publicnode.com/'],
+      http: ['https://rpc-mainnet.u2u.xyz'],
     },
     public: {
-      http: ['https://bsc-testnet-rpc.publicnode.com/'],
+      http: ['https://rpc-mainnet.u2u.xyz'],
     },
   },
   blockExplorers: {
     default: {
-      name: 'BNB Smart Chain Testnet Explorer',
-      url: 'https://testnet.bscscan.com',
+      name: 'U2U Solaris Explorer',
+      url: 'https://explorer.u2u.xyz',
     },
   },
-  testnet: true,
+  testnet: false,
 })
 
 // Get WalletConnect project ID from environment or use a fallback
@@ -53,9 +53,9 @@ const connectors = [
 console.log("Wagmi config: Available connectors:", connectors.map(c => c.name))
 
 export const config = createConfig({
-  chains: [bnbSmartChainTestnet], // ✅ Set chain to BNB Smart Chain Testnet
+  chains: [u2uSolarisMainnet], // ✅ Set chain to U2U Solaris Mainnet
   connectors,
   transports: {
-    [bnbSmartChainTestnet.id]: http(), // ✅ Use default RPC for BNB Smart Chain Testnet
+    [u2uSolarisMainnet.id]: http(), // ✅ Use default RPC for U2U Solaris Mainnet
   },
 })

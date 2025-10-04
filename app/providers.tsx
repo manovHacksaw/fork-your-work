@@ -4,6 +4,7 @@ import { WagmiProvider } from "wagmi"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { config } from "@/lib/wagmi"
 import { WalletProvider } from "@/contexts/wallet-context"
+import { ChainGuard } from "@/components/ui/chain-guard"
 
 const queryClient = new QueryClient()
 
@@ -12,7 +13,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <WalletProvider>
-          {children}
+          <ChainGuard>
+            {children}
+          </ChainGuard>
         </WalletProvider>
       </QueryClientProvider>
     </WagmiProvider>

@@ -3,10 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:usdt": "hardhat run scripts/deploy-USDT.js --network u2uSolarisMainnet",
+    "deploy:bounty": "hardhat run scripts/deploy-Bounty.js --network u2uSolarisMainnet",
+    "deploy:freelance": "hardhat run scripts/deploy-Freelance.js --network u2uSolarisMainnet",
+    "deploy:all": "hardhat run scripts/deploy-all.js --network u2uSolarisMainnet",
+    "verify:usdt": "hardhat verify --network u2uSolarisMainnet",
+    "verify:bounty": "hardhat verify --network u2uSolarisMainnet",
+    "verify:freelance": "hardhat verify --network u2uSolarisMainnet"
   },
   "dependencies": {
     "@civic/auth": "^0.8.0",
@@ -38,10 +47,17 @@
     "wagmi": "^2.15.6"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/preset-env": "^7.28.3",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@openzeppelin/contracts": "^4.9.6",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "babel-loader": "^10.0.0",
+    "dotenv": "^17.2.3",
+    "hardhat": "^2.26.3",
     "prisma": "^6.10.1",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.4",

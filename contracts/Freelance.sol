@@ -110,7 +110,7 @@ contract FreelanceGigEscrow is ReentrancyGuard, Ownable {
         _;
     }
 
-    constructor(address _mockUSDT) Ownable(msg.sender) {
+    constructor(address _mockUSDT) Ownable() {
         mockUSDT = IERC20(_mockUSDT);
     }
     

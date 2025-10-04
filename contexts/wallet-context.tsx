@@ -31,30 +31,32 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   const [shouldRedirectToDashboard, setShouldRedirectToDashboard] = useState(false)
   const [isAutoSwitching, setIsAutoSwitching] = useState(false)
 
-  // BNB Smart Chain Testnet ID (fixed typo)
-  const BNB_SMART_CHAIN_TESTNET_ID = 97;
+  // U2U Solaris Mainnet ID
+  const U2U_SOLARIS_MAINNET_ID = 39;
 
-  // Switch to BNB Smart Chain Testnet if connected to wrong network
+  // Enforce U2U Solaris Mainnet - switch immediately when connected to wrong network
   useEffect(() => {
-    if (isConnected && chainId && chainId !== BNB_SMART_CHAIN_TESTNET_ID && !isAutoSwitching) {
-      console.log("Wallet context: Switching to BNB Smart Chain Testnet. Current chain:", chainId)
+    if (isConnected && chainId && chainId !== U2U_SOLARIS_MAINNET_ID && !isAutoSwitching) {
+      console.log("🚨 ENFORCING U2U CHAIN: Switching to U2U Solaris Mainnet. Current chain:", chainId)
       setIsAutoSwitching(true)
       
-      const switchToTargetChain = async () => {
+      const enforceU2UChain = async () => {
         try {
-          await switchChain({ chainId: BNB_SMART_CHAIN_TESTNET_ID })
-          console.log("Wallet context: Successfully switched to BNB Smart Chain Testnet")
+          await switchChain({ chainId: U2U_SOLARIS_MAINNET_ID })
+          console.log("✅ Successfully enforced U2U Solaris Mainnet")
         } catch (error) {
-          console.error("Failed to switch to BNB Smart Chain Testnet:", error)
-          // You might want to show a user-friendly error message here
+          console.error("❌ Failed to enforce U2U Solaris Mainnet:", error)
+          // If switching fails, we should disconnect the user to prevent wrong chain usage
+          console.log("🔌 Disconnecting wallet due to wrong chain")
+          wagmiDisconnect()
         } finally {
           setIsAutoSwitching(false)
         }
       }
       
-      switchToTargetChain()
+      enforceU2UChain()
     }
-  }, [isConnected, chainId, switchChain, isAutoSwitching])
+  }, [isConnected, chainId, switchChain, isAutoSwitching, wagmiDisconnect])
 
   // Reset animation state when wallet disconnects
   useEffect(() => {
@@ -67,7 +69,7 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
   // Handle redirect to dashboard when wallet connects and is on correct chain
   useEffect(() => {
     if (isConnected && address && shouldRedirectToDashboard && 
-        chainId === BNB_SMART_CHAIN_TESTNET_ID && !isAutoSwitching) {
+        chainId === U2U_SOLARIS_MAINNET_ID && !isAutoSwitching) {
       // Check if we're not already on a dashboard page
       const currentPath = window.location.pathname
       if (!currentPath.startsWith('/dashboard')) {
@@ -93,6 +95,17 @@ export function WalletProvider({ children }: { children: React.ReactNode }) {
       console.log("Wallet context: Attempting wagmiConnect...")
       await wagmiConnect({ connector })
       console.log("Wallet context: wagmiConnect successful")
+      
+      // Immediately enforce U2U chain after connection
+      console.log("🔒 Enforcing U2U Solaris Mainnet after connection...")
+      try {
+        await switchChain({ chainId: U2U_SOLARIS_MAINNET_ID })
+        console.log("✅ Successfully switched to U2U Solaris Mainnet after connection")
+      } catch (switchError) {
+        console.error("❌ Failed to switch to U2U after connection:", switchError)
+        // Don't throw here, let the useEffect handle it
+      }
+      
       // Set redirect flag when connecting
       setShouldRedirectToDashboard(true)
     } catch (error) {

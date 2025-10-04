@@ -30,7 +30,7 @@ async function main() {
   
   console.log("✅ Allin1Bounty deployed successfully!");
   console.log("📍 Contract Address:", bountyAddress);
-      console.log("🔗 Explorer URL:", `https://explorer.u2u.xyz/address/${bountyAddress}`);
+      console.log("🔗 Explorer URL:", `https://u2uscan.xyz/address/${bountyAddress}`);
   
   // Verify the deployment
   const owner = await bounty.owner();

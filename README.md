@@ -78,7 +78,7 @@ Contract Address: 0x0caE75a45201304d6b45541BCeF12bd3ee787e28
 - **RPC URL**: [`https://rpc-mainnet.u2u.xyz`](https://rpc-mainnet.u2u.xyz)
 - **Chain ID**: `39`
 - **Currency**: U2U
-- **Explorer**: [https://explorer.u2u.xyz](https://explorer.u2u.xyz)
+- **Explorer**: [https://u2uscan.xyz](https://u2uscan.xyz)
 
 
 ## 🚀 Getting Started
@@ -153,21 +153,21 @@ Contract Address: 0x0caE75a45201304d6b45541BCeF12bd3ee787e28
 ## 🔧 Smart Contracts
 
 ### Bounty Contract (`Bounty.sol`)
-- Contract Address: [0x637224F6460A5Bc3FE0B873e4361288ba7Ac3883](https://explorer.u2u.xyz/address/0x637224F6460A5Bc3FE0B873e4361288ba7Ac3883)
+- Contract Address: [0x637224F6460A5Bc3FE0B873e4361288ba7Ac3883](https://u2uscan.xyz/address/0x637224F6460A5Bc3FE0B873e4361288ba7Ac3883)
 - Manages competitive bounty competitions
 - Handles USDT payments and prize distribution
 - Implements deadline enforcement and penalty systems
 - Supports multiple categories and submission tracking
 
 ### Freelance Contract (`Freelance.sol`)
-- Contract Address: [0x0aa14c4F895EBe9905FcFC90cCEc70a991C12788](https://explorer.u2u.xyz/address/0x0aa14c4F895EBe9905FcFC90cCEc70a991C12788)
+- Contract Address: [0x0aa14c4F895EBe9905FcFC90cCEc70a991C12788](https://u2uscan.xyz/address/0x0aa14c4F895EBe9905FcFC90cCEc70a991C12788)
 - Escrow system for freelance projects
 - Staking mechanism for freelancer commitment
 - Proposal management and selection process
 - Automated deadline handling and fund release
 
 ### USDT Token (Mock)
-- Token Address: [0x6aE731EbaC64f1E9c6A721eA2775028762830CF7](https://explorer.u2u.xyz/address/0x6aE731EbaC64f1E9c6A721eA2775028762830CF7)
+- Token Address: [0x6aE731EbaC64f1E9c6A721eA2775028762830CF7](https://u2uscan.xyz/address/0x6aE731EbaC64f1E9c6A721eA2775028762830CF7)
 - ERC20 stablecoin used for all payments on the platform
   
 

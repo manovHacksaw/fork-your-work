@@ -37,8 +37,8 @@ module.exports = {
         network: "u2uSolarisMainnet",
         chainId: 39,
             urls: {
-              apiURL: "https://explorer.u2u.xyz/api",
-              browserURL: "https://explorer.u2u.xyz",
+              apiURL: "https://u2uscan.xyz/api",
+              browserURL: "https://u2uscan.xyz",
             },
       },
     ],

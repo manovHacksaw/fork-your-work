@@ -50,20 +50,20 @@ async function main() {
       contracts: {
         MockUSDT: {
           address: usdtAddress,
-          explorer: `https://explorer.u2u.xyz/address/${usdtAddress}`,
+          explorer: `https://u2uscan.xyz/address/${usdtAddress}`,
           name: await mockUSDT.name(),
           symbol: await mockUSDT.symbol(),
           decimals: (await mockUSDT.decimals()).toString()
         },
         Allin1Bounty: {
           address: bountyAddress,
-          explorer: `https://explorer.u2u.xyz/address/${bountyAddress}`,
+          explorer: `https://u2uscan.xyz/address/${bountyAddress}`,
           owner: await bounty.owner(),
           usdtToken: usdtAddress
         },
         FreelanceGigEscrow: {
           address: freelanceAddress,
-          explorer: `https://explorer.u2u.xyz/address/${freelanceAddress}`,
+          explorer: `https://u2uscan.xyz/address/${freelanceAddress}`,
           owner: await freelance.owner(),
           mockUSDT: usdtAddress,
           platformFee: (await freelance.platformFeePercent()).toString(),
@@ -104,9 +104,9 @@ async function main() {
     console.log("   Freelance:    ", freelanceAddress);
     
     console.log("\n🔗 Explorer Links:");
-    console.log("   USDT:     https://explorer.u2u.xyz/address/" + usdtAddress);
-    console.log("   Bounty:   https://explorer.u2u.xyz/address/" + bountyAddress);
-    console.log("   Freelance: https://explorer.u2u.xyz/address/" + freelanceAddress);
+    console.log("   USDT:     https://u2uscan.xyz/address/" + usdtAddress);
+    console.log("   Bounty:   https://u2uscan.xyz/address/" + bountyAddress);
+    console.log("   Freelance: https://u2uscan.xyz/address/" + freelanceAddress);
     
     console.log("\n💾 Deployment files saved:");
     console.log("   ./deployments/complete-deployment.json");

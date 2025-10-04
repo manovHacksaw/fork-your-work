@@ -138,7 +138,7 @@ npm run verify:freelance <freelance_address>
 - **RPC URL**: https://rpc-mainnet.u2u.xyz
 - **Chain ID**: 39
 - **Currency**: U2U
-- **Explorer**: https://explorer.u2u.xyz
+- **Explorer**: https://u2uscan.xyz
 
 ## 🆘 Troubleshooting
 

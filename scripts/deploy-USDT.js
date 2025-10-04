@@ -18,7 +18,7 @@ async function main() {
   
   console.log("✅ MockUSDT deployed successfully!");
   console.log("📍 Contract Address:", usdtAddress);
-      console.log("🔗 Explorer URL:", `https://explorer.u2u.xyz/address/${usdtAddress}`);
+      console.log("🔗 Explorer URL:", `https://u2uscan.xyz/address/${usdtAddress}`);
   
   // Verify the deployment
   const name = await mockUSDT.name();

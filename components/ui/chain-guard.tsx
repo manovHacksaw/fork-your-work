@@ -51,7 +51,7 @@ export function ChainGuard({ children }: ChainGuardProps) {
         decimals: 18,
       },
       rpcUrls: ["https://rpc-mainnet.u2u.xyz"],
-      blockExplorerUrls: ["https://explorer.u2u.xyz"],
+      blockExplorerUrls: ["https://u2uscan.xyz"],
     }
 
     // Try to add the network to the wallet

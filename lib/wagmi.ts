@@ -23,7 +23,7 @@ const u2uSolarisMainnet = defineChain({
   blockExplorers: {
     default: {
       name: 'U2U Solaris Explorer',
-      url: 'https://explorer.u2u.xyz',
+      url: 'https://u2uscan.xyz',
     },
   },
   testnet: false,

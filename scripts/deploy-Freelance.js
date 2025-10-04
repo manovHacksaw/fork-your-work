@@ -30,7 +30,7 @@ async function main() {
   
   console.log("✅ FreelanceGigEscrow deployed successfully!");
   console.log("📍 Contract Address:", freelanceAddress);
-      console.log("🔗 Explorer URL:", `https://explorer.u2u.xyz/address/${freelanceAddress}`);
+      console.log("🔗 Explorer URL:", `https://u2uscan.xyz/address/${freelanceAddress}`);
   
   // Verify the deployment
   const owner = await freelance.owner();
